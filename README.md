@@ -30,19 +30,10 @@ $ ./digits <input_file> <output_file> [options]
 Replace <input_file> and <output_file> with the actual paths to your input and output files, respectively.
 
 #### Execution Time Arguments
-<input_file>: The path to the input file that needs to be sanitized.
-<output_file>: The path to the output file where the sanitized content will be stored.
-If no triggers are used, the program will prompt for input during execution, or pressing Enter will cause the program to fail and exit.
+- <input_file>: The path to the input file that needs to be sanitized.
+- <output_file>: The path to the output file where the sanitized content will be stored.
 
 The program collapses repeated punctuational marks to a single instance by default. Use the -p trigger to suppress this behavior.
-
-#### Help Screen
-To display the help screen, use the following command:
-```shell
-$ ./digits --help
-```
-
-The help screen provides a summary of the program's usage and available options.
 
 #### Options:
 ```
@@ -52,6 +43,8 @@ The help screen provides a summary of the program's usage and available options.
 -u  Allow Unicode characters
 --help  Show the help message
 ```
+
+> If no triggers are used, the program will prompt for input during execution, or pressing Enter will cause the program to fail and exit.
 
 ---
 
