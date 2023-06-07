@@ -2,6 +2,8 @@
 
 digits is a bash script that takes a path to a plaintext file as an argument at execution time. It parses the input file and generates an output file that is sanitized of non-numeric or punctuational characters. Additionally, it collapses repeated punctuational characters to only one instance instead of two or more.
 
+In addition to the main script, a supplementary script, `digitalpha.sh`, is also provided, offering the same functionality with an extended capability. `digitalpha.sh` allows alphanumeric and punctuational characters to pass through the sanitization process, ensuring that your text data retains both letters and special characters. This versatile script complements the main script, providing flexibility for data cleaning and preprocessing tasks where alphanumeric information is essential.
+
 ---
 
 ## Usage
