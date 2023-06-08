@@ -122,18 +122,18 @@ Digits can be useful in various scenarios, including:
 ┌─ Start Program
 │
 ├─ Check if input arguments are provided
-│   ├─ No arguments provided:
+│   ├─ If no arguments provided:
 │   │   └─ Display usage instructions
-│   │       and exit program
-│   └─ Arguments provided:
-│       ├─ Assign input file path and output file path
+│   │      and exit program
+│   └─ If arguments provided:
+│       ├─ Assign input file path and output file name
 │       └─ Proceed to next step
 │
 ├─ Check if input file exists
-│   ├─ File does not exist:
+│   ├─ If file does not exist:
 │   │   └─ Display "File not found" message
-│   │       and exit program
-│   └─ File exists:
+│   │      and exit program
+│   └─ If file exists:
 │       └─ Proceed to sanitization step
 │
 ├─ Sanitize the input file
@@ -141,10 +141,9 @@ Digits can be useful in various scenarios, including:
 │   ├─ Apply specified sanitization methods
 │   │   ├─ Remove non-numeric characters if triggered
 │   │   ├─ Remove non-alphabetic characters if triggered
-│   │   ├─ Remove non-punctuational characters if (not) triggered
+│   │   ├─ Remove non-punctuational characters if triggered
 │   │   └─ Allow unicode characters if triggered
-│   │
-│   ├─ Collapse repeated punctuations if triggered
+│   ├─ Remove consecutive duplicate lines
 │   └─ Generate the sanitized output
 │
 ├─ Save the sanitized output to a file
@@ -153,7 +152,6 @@ Digits can be useful in various scenarios, including:
 │   └─ Display "Sanitized file created" message
 │
 └─ End Program
-
 ```
 
 ---
@@ -163,33 +161,18 @@ Digits can be useful in various scenarios, including:
 Here are a few potential concerns to be aware of:
 
 ### Bash Scripts
-#### The script assumes that the input file is in plaintext format.
-If it contains binary or non-text data, the behavior may not be as expected.
-
-#### The script removes all non-numeric and non-punctuational characters.
-This may result in loss of information if certain characters are needed for the desired task.
+The scripts assume that the input file is in plaintext format. If it contains binary or non-text data, the behavior may not be as expected.
 
 ### Rust Program
-#### Input Validation:
-The program assumes that the provided input file path is valid and exists. It does not perform extensive validation on the input file. It's important to ensure that the input file exists and that the program has proper read permissions.
 
-#### Error Handling:
-While the program includes basic error handling using Rust's Result type, it may not cover all possible error scenarios. It's important to handle errors gracefully and provide appropriate error messages to the user.
-
-#### Performance:
-The program reads the input file line by line, which may be slower compared to processing the entire file at once. If you're working with large files, the program's performance could be a concern. Consider optimizing the program for large file processing if necessary.
+#### Performance Optimization:
+Depending on the size of the input file, consider optimizing the program's performance. For example, you could process the file in chunks rather than loading the entire file into memory at once, which can be beneficial for large files.
 
 #### Memory Usage:
 The program loads the entire contents of each line into memory when sanitizing the file. If you're working with very long lines or large files, this could consume a significant amount of memory. Consider using buffered reading and writing for more efficient memory usage.
 
 #### Security:
 The program performs file I/O operations based on user-provided input file paths. It's important to ensure that the program has appropriate permissions and that user input is properly validated to prevent potential security vulnerabilities such as file path injection.
-
-#### Compatibility:
-The program relies on external command-line tools (`tr` and `awk`) to perform specific operations. It assumes these tools are available in the environment. Ensure that the necessary tools are installed and accessible on the system where the program will be executed.
-
-#### Portability:
-While Rust itself provides good portability across different platforms, the program's reliance on external command-line tools may limit its portability. Verify the availability of these tools on different platforms or consider alternative Rust-based approaches to achieve the desired functionality without relying on external tools.
 
 ---
 
