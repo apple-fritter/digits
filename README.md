@@ -1,4 +1,5 @@
 # digits
+Digits ensures your data is ready for further analysis, machine learning tasks, or natural language processing (NLP) applications.
 
 [digits.sh](https://github.com/apple-fritter/digits/blob/main/digits.sh) is a bash script that takes a path to a plaintext file as an argument at execution time. It parses the input file and generates an output file that is sanitized of non-numeric or punctuational characters. Additionally, it collapses repeated punctuational characters to only one instance instead of two or more.
 
