@@ -141,9 +141,9 @@ Digits can be useful in various scenarios, including:
 │   ├─ Apply specified sanitization methods
 │   │   ├─ Remove non-numeric characters if triggered
 │   │   ├─ Remove non-alphabetic characters if triggered
-│   │   ├─ Remove non-punctuational characters if triggered
+│   │   ├─ Allow repeated punctuational characters if triggered
 │   │   └─ Allow unicode characters if triggered
-│   ├─ Remove consecutive duplicate lines
+│   │
 │   └─ Generate the sanitized output
 │
 ├─ Save the sanitized output to a file
