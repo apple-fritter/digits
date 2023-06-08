@@ -104,7 +104,7 @@ The Sanitize Text script can be useful in various scenarios, including:
 │   └─ Check if input file exists
 │
 ├─ Remove non-numeric, non-punctuational, and non-alphabetical characters from the input file
-│   └─ Use `tr` to replace non-numeric, non-punctuational, and non-alphabetical characters with a newline character
+│   └─ Use `tr` to replace non-alphanumeric and non-punctuational characters with a newline character
 │
 ├─ Collapse repeated punctuations
 │   └─ Use `awk` to print only the first occurrence of each line
