@@ -59,7 +59,7 @@ Digits can be useful in various scenarios, including:
 
 ## Flowchart
 
-### digits.sh
+### [digits.sh](https://github.com/apple-fritter/digits/blob/main/digits.sh)
 ```
 ┌─ Start Program
 │
@@ -88,7 +88,7 @@ Digits can be useful in various scenarios, including:
 └─ End Program
 ```
 
-### digitalpha.sh
+### [digitalpha.sh](https://github.com/apple-fritter/digits/blob/main/digitalpha.sh)
 ```
 ┌─ Start Program
 │
@@ -117,7 +117,7 @@ Digits can be useful in various scenarios, including:
 └─ End Program
 ```
 
-### digits.rs
+### [digits.rs](https://github.com/apple-fritter/digits/blob/main/source/digits.rs)
 ```
 ┌─ Start Program
 │
