@@ -143,7 +143,6 @@ The Sanitize Text script can be useful in various scenarios, including:
 Here are a few potential concerns to be aware of:
 
 ### Bash Scripts
-
 #### The script assumes that the input file is in plaintext format.
 If it contains binary or non-text data, the behavior may not be as expected.
 
@@ -151,7 +150,6 @@ If it contains binary or non-text data, the behavior may not be as expected.
 This may result in loss of information if certain characters are needed for the desired task.
 
 ### Rust Program
-
 #### Input Validation:
 The program assumes that the provided input file path is valid and exists. It does not perform extensive validation on the input file. It's important to ensure that the input file exists and that the program has proper read permissions.
 
