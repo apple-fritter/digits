@@ -5,7 +5,7 @@ Digits ensures your data is ready for further analysis, machine learning tasks, 
 
 In addition to the main script, a supplementary script, [digitalpha.sh](https://github.com/apple-fritter/digits/blob/main/digitalpha.sh), is also provided, offering the same functionality with an extended capability. It allows alphanumeric and punctuational characters to pass through the sanitization process. This versatile script complements the main script, providing flexibility for data cleaning and preprocessing tasks where alphanumeric information is essential.
 
-Finally, a [rust program](https://github.com/apple-fritter/digits/blob/main/source/digits.rs) has been put together to integrate into other projects, or to be used as a standalone tool. In addition to the features offered by the two bash scripts, the Rust program supports different triggers/options to allow specific types of characters during the sanitization process. The Rust program still collapses repeated punctuational marks to a single instance by default, but this behavior can be suppressed using the -p trigger.
+Finally, a [Rust program](https://github.com/apple-fritter/digits/blob/main/source/digits.rs) has been put together to integrate into other projects, or to be used as a standalone tool. In addition to the features offered by the two bash scripts, the Rust program supports different triggers/options to allow specific types of characters during the sanitization process. The Rust program still collapses repeated punctuational marks to a single instance by default, but this behavior can be suppressed using the -p trigger.
 
 ---
 
