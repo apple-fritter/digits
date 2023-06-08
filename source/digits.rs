@@ -1,73 +1,64 @@
 use std::env;
 use std::fs::File;
-use std::io::{self, BufRead, BufReader, BufWriter, Write};
+use std::io::{BufRead, BufReader, Write};
 
-fn sanitize_line(line: &str, allow_alpha: bool, allow_numeric: bool, allow_punctuation: bool, allow_unicode: bool, collapse_punctuation: bool) -> String {
+fn sanitize_input(input: &str, allow_alphabetic: bool, allow_numeric: bool, allow_punctuational: bool, allow_unicode: bool) -> String {
     let mut sanitized = String::new();
 
-    for c in line.chars() {
-        if allow_alpha && c.is_alphabetic() {
+    for c in input.chars() {
+        if c.is_ascii_digit() && allow_numeric {
             sanitized.push(c);
-        } else if allow_numeric && c.is_numeric() {
+        } else if c.is_ascii_alphabetic() && allow_alphabetic {
             sanitized.push(c);
-        } else if allow_punctuation && c.is_ascii_punctuation() {
+        } else if c.is_ascii_punctuation() && allow_punctuational {
             sanitized.push(c);
-        } else if allow_unicode {
+        } else if !c.is_ascii() && allow_unicode {
             sanitized.push(c);
-        } else if collapse_punctuation && sanitized.ends_with(c) {
-            continue;
         }
     }
 
     sanitized
 }
 
-fn sanitize_file(input_path: &str, output_path: &str, allow_alpha: bool, allow_numeric: bool, allow_punctuation: bool, allow_unicode: bool, collapse_punctuation: bool) -> io::Result<()> {
-    let input_file = File::open(input_path)?;
-    let reader = BufReader::new(input_file);
-
-    let output_file = File::create(output_path)?;
-    let mut writer = BufWriter::new(output_file);
-
-    for line in reader.lines() {
-        let line = line?;
-        let sanitized = sanitize_line(&line, allow_alpha, allow_numeric, allow_punctuation, allow_unicode, collapse_punctuation);
-        writeln!(writer, "{}", sanitized)?;
-    }
-
-    Ok(())
-}
-
-fn print_help() {
-    println!("Usage: program_name <input_file> <output_file> [options]");
-    println!("Options:");
-    println!("-a  Allow alphabetic characters");
-    println!("-n  Allow numeric characters");
-    println!("-p  Allow punctuational characters");
-    println!("-u  Allow unicode characters");
-    println!("--help  Show this help message");
-}
-
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    if args.len() < 3 {
-        eprintln!("Usage: {} <input_file> <output_file> [options]", args[0]);
-        std::process::exit(1);
+    if args.len() != 3 {
+        println!("Usage: {} <input_file> <output_file>", args[0]);
+        return;
     }
 
     let input_file = &args[1];
     let output_file = &args[2];
 
-    if input_file == "--help" {
-        print_help();
-        std::process::exit(0);
+    let input_path = std::path::Path::new(input_file);
+    if !input_path.exists() {
+        println!("File not found: {}", input_file);
+        return;
     }
 
-    if let Err(err) = sanitize_file(input_file, output_file, true, true, true, true, false) {
-        eprintln!("Error: {}", err);
-        std::process::exit(1);
+    let file = File::open(input_file).expect("Failed to open input file");
+    let reader = BufReader::new(file);
+
+    let mut sanitized_output = String::new();
+    let mut prev_punctuation = false;
+
+    for line in reader.lines() {
+        let input_line = line.expect("Failed to read line");
+        let sanitized_line = sanitize_input(&input_line, true, true, true, true);
+
+        if !prev_punctuation || !sanitized_line.is_empty() {
+            sanitized_output.push_str(&sanitized_line);
+            sanitized_output.push('\n');
+        }
+
+        prev_punctuation = sanitized_line.chars().last().map(|c| c.is_ascii_punctuation()).unwrap_or(false);
     }
+
+    let mut output_file = File::create(output_file).expect("Failed to create output file");
+    output_file
+        .write_all(sanitized_output.as_bytes())
+        .expect("Failed to write output file");
 
     println!("Sanitized file created: {}", output_file);
 }
