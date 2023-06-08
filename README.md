@@ -48,26 +48,12 @@ The program collapses repeated punctuational marks to a single instance by defau
 
 ---
 
-## How it Works
-
-The script follows these steps to sanitize the input file:
-
-1. It checks if an argument (file path) was provided and displays usage instructions if no argument is provided.
-2. The input file path and output file name are assigned.
-3. It checks if the input file exists, displaying an error message if it doesn't.
-4. The script removes non-numeric and non-punctuational characters from the input file using the `tr` command. It replaces any sequence of non-numeric and non-punctuational characters with a newline character.
-5. It collapses repeated punctuations using the `awk` command. Only the first occurrence of each line is printed.
-6. The sanitized output is saved to the `sanitized.txt` file.
-7. A message is displayed indicating the creation of the sanitized file.
-
----
-
 ## Use Cases
 
-The Sanitize Text script can be useful in various scenarios, including:
+Digits can be useful in various scenarios, including:
 
-- Cleaning up text files containing non-numeric or non-punctuational characters for further processing or analysis.
-- Preparing text data for machine learning or natural language processing tasks that require numeric or punctuational input.
+- Cleaning up text files for further processing or analysis.
+- Preparing text data for machine learning or natural language processing tasks that require standardized input.
 
 ---
 
@@ -78,18 +64,26 @@ The Sanitize Text script can be useful in various scenarios, including:
 ┌─ Start Program
 │
 ├─ Check if an argument (file path) was provided
-│   ├─ Display usage instructions and exit if no argument provided
-│   ├─ Assign input file path and output file name
-│   └─ Check if input file exists
+│   ├─ No argument provided:
+│   │   └─ Display usage instructions
+│   └─ Argument provided:
+│       └─ Assign input and output file paths
 │
-├─ Remove non-numeric and non-punctuational characters from the input file
-│   └─ Use `tr` to replace non-numeric and non-punctuational characters with a newline character
+├─ Check if input file exists
+│   ├─ File does not exist:
+│   │   └─ Display "File not found" message and exit
+│   └─ File exists:
+│       └─ Proceed to next step
+│
+├─ Sanitize the input file
+│   └─ Remove non-numeric and non-punctuational characters
+│       from the input file using `tr`
 │
 ├─ Collapse repeated punctuations
-│   └─ Use `awk` to print only the first occurrence of each line
+│   └─ Remove consecutive duplicate lines using `awk`
 │
 ├─ Save the sanitized output to a file
-│   └─ Redirect the sanitized output to the `sanitized.txt` file
+│   └─ Redirect the sanitized output to `sanitized.txt`
 │
 └─ End Program
 ```
@@ -99,18 +93,26 @@ The Sanitize Text script can be useful in various scenarios, including:
 ┌─ Start Program
 │
 ├─ Check if an argument (file path) was provided
-│   ├─ Display usage instructions and exit if no argument provided
-│   ├─ Assign input file path and output file name
-│   └─ Check if input file exists
+│   ├─ No argument provided:
+│   │   └─ Display usage instructions
+│   └─ Argument provided:
+│       └─ Assign input and output file paths
 │
-├─ Remove non-numeric, non-punctuational, and non-alphabetical characters from the input file
-│   └─ Use `tr` to replace non-alphanumeric and non-punctuational characters with a newline character
+├─ Check if input file exists
+│   ├─ File does not exist:
+│   │   └─ Display "File not found" message and exit
+│   └─ File exists:
+│       └─ Proceed to next step
+│
+├─ Sanitize the input file
+│   └─ Remove non-alphanumeric and non-punctuational characters
+│       from the input file using `tr`
 │
 ├─ Collapse repeated punctuations
-│   └─ Use `awk` to print only the first occurrence of each line
+│   └─ Remove consecutive duplicate lines using `awk`
 │
 ├─ Save the sanitized output to a file
-│   └─ Redirect the sanitized output to the `sanitized.txt` file
+│   └─ Redirect the sanitized output to `sanitized.txt`
 │
 └─ End Program
 ```
@@ -119,21 +121,39 @@ The Sanitize Text script can be useful in various scenarios, including:
 ```
 ┌─ Start Program
 │
-├─ Check if input and output file paths were provided
-│   ├─ Display usage instructions and exit if no arguments provided
-│   ├─ Assign input and output file paths
-│   └─ Check if input file exists
+├─ Check if input arguments are provided
+│   ├─ No arguments provided:
+│   │   └─ Display usage instructions
+│   │       and exit program
+│   └─ Arguments provided:
+│       ├─ Assign input file path and output file path
+│       └─ Proceed to next step
+│
+├─ Check if input file exists
+│   ├─ File does not exist:
+│   │   └─ Display "File not found" message
+│   │       and exit program
+│   └─ File exists:
+│       └─ Proceed to sanitization step
 │
 ├─ Sanitize the input file
-│   └─ Read the input file line by line
-│       ├─ Apply sanitization rules to each line
-│       │   └─ Check if characters should be allowed based on the provided triggers
-│       └─ Store the sanitized lines
+│   ├─ Read the contents of the input file
+│   ├─ Apply specified sanitization methods
+│   │   ├─ Remove non-numeric characters if triggered
+│   │   ├─ Remove non-alphabetic characters if triggered
+│   │   ├─ Remove non-punctuational characters if (not) triggered
+│   │   └─ Allow unicode characters if triggered
+│   │
+│   ├─ Collapse repeated punctuations if triggered
+│   └─ Generate the sanitized output
 │
 ├─ Save the sanitized output to a file
-│   └─ Write the sanitized lines to the output file
+│   ├─ Create or overwrite the output file
+│   ├─ Write the sanitized output to the file
+│   └─ Display "Sanitized file created" message
 │
 └─ End Program
+
 ```
 
 ---
