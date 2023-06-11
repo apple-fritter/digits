@@ -7,6 +7,8 @@ In addition to the main script, a supplementary script, [digitalpha.sh](https://
 
 Finally, a [Rust program](https://github.com/apple-fritter/digits/blob/main/source/digits.rs) has been put together to integrate into other projects, or to be used as a standalone tool. In addition to the features offered by the two bash scripts, the Rust program supports different triggers/options to allow specific types of characters during the sanitization process. The Rust program still collapses repeated punctuational marks to a single instance by default, but this behavior can be suppressed using the -p trigger.
 
+All of the above files preserve whitespace separations and do not add or remove newline characters; spaces and tabs are preserved, but collapsed to single consecutive instances, irrespective of flags raised at execution time.
+
 ---
 
 ## Usage
