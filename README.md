@@ -9,6 +9,8 @@ Finally, a [Rust program](https://github.com/apple-fritter/digits/blob/main/sour
 
 All of the above files preserve whitespace separations and do not add or remove newline characters; spaces and tabs are preserved, but collapsed to single consecutive instances, irrespective of flags raised at execution time.
 
+Future versions of digits will include the option to replace any sanitized content with user supplied patterns.
+
 ---
 
 ## Usage
