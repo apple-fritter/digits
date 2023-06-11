@@ -13,7 +13,7 @@ if [ ! -f "$input_file" ]; then
   exit 1
 fi
 
-# Remove non-numeric, non-punctuational, and non-alphabetical characters, and collapse repeated punctuations
+# Remove non-numeric, non-punctuational, and non-alphabetical characters, and collapse repeated punctuations, tabs, and spaces.
 cat "$input_file" | tr -d -c '[:alnum:][:punct:][:space:]' | tr -s ' \t' | awk '!a[$0]++' > "$output_file"
 
 echo "Sanitized file created: $output_file"
