@@ -1,13 +1,28 @@
 # digits
 Digits ensures your data is ready for further analysis, machine learning tasks, or natural language processing (NLP) applications.
 
+---
+
+#### BASH Scripts
 [digits.sh](https://github.com/apple-fritter/digits/blob/main/digits.sh) is a bash script that takes a path to a plaintext file as an argument at execution time. It parses the input file and generates an output file that is sanitized of non-numeric or punctuational characters. Additionally, it collapses repeated punctuational characters to only one instance instead of two or more.
 
 In addition to the main script, a supplementary script, [digitalpha.sh](https://github.com/apple-fritter/digits/blob/main/digitalpha.sh), is also provided, offering the same functionality with an extended capability. It allows alphanumeric and punctuational characters to pass through the sanitization process. This versatile script complements the main script, providing flexibility for data cleaning and preprocessing tasks where alphanumeric information is essential.
 
-Finally, a [Rust program](https://github.com/apple-fritter/digits/blob/main/source/digits.rs) has been put together to integrate into other projects, or to be used as a standalone tool. In addition to the features offered by the two bash scripts, the Rust program supports different triggers/options to allow specific types of characters during the sanitization process. The Rust program still collapses repeated punctuational marks to a single instance by default, but this behavior can be suppressed using the -p trigger.
+---
+
+#### Rust
+
+Finally, a [Rust program](https://github.com/apple-fritter/digits/blob/main/source/digits.rs) has been put together to integrate into other projects, or to be used as a standalone tool.
+
+In addition to the features offered by the two bash scripts, the Rust program supports different triggers/options to allow specific types of characters during the sanitization process.
+
+The Rust program still collapses repeated punctuational marks to a single instance by default, but this behavior can be suppressed using the -p trigger.
 
 All of the above files preserve whitespace separations and do not add or remove newline characters; spaces and tabs are preserved, but collapsed to single consecutive instances, irrespective of flags raised at execution time.
+
+---
+
+## Looking forward 
 
 Future versions of digits will include the option to replace any sanitized content with user supplied patterns.
 
