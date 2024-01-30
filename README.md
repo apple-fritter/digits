@@ -279,26 +279,25 @@ Digits can be useful in various scenarios, including:
 └─ Конец программы
 ```
 
-
 ---
 
-## Potential Concerns
+## Potential Concerns (Возможные Заботы)
 
-Here are a few potential concerns to be aware of:
+Here are a few potential concerns to be aware of:<br>Вот несколько возможных моментов, о которых стоит знать:
 
-### Bash Scripts
-The scripts assume that the input file is in plaintext format. If it contains binary or non-text data, the behavior may not be as expected.
+### Bash Scripts (Сценарии Bash)
+The scripts assume that the input file is in plaintext format. If it contains binary or non-text data, the behavior may not be as expected.<br>Сценарии предполагают, что входной файл имеет формат обычного текста. Если в нем содержится двоичная или не-текстовая информация, поведение может быть неожиданным.
 
-### Rust Program
+### Rust Program (рограмма на Rust)
 
-#### Performance Optimization:
-Depending on the size of the input file, consider optimizing the program's performance. For example, you could process the file in chunks rather than loading the entire file into memory at once, which can be beneficial for large files.
+#### Performance Optimization:(Оптимизация Производительности:)
+Depending on the size of the input file, consider optimizing the program's performance. For example, you could process the file in chunks rather than loading the entire file into memory at once, which can be beneficial for large files.<br>В зависимости от размера входного файла рассмотрите возможность оптимизации производительности программы. Например, можно обработать файл порциями, а не загружая его целиком в память, что может быть полезным для больших файлов.
 
-#### Memory Usage:
-The program loads the entire contents of each line into memory when sanitizing the file. If you're working with very long lines or large files, this could consume a significant amount of memory. Consider using buffered reading and writing for more efficient memory usage.
+#### Memory Usage:(Использование Памяти:)
+The program loads the entire contents of each line into memory when sanitizing the file. If you're working with very long lines or large files, this could consume a significant amount of memory. Consider using buffered reading and writing for more efficient memory usage.<br>Программа загружает в память содержимое каждой строки при санитарии файла. Если вы работаете с очень длинными строками или большими файлами, это может потребовать значительного объема памяти. Рассмотрите использование буферизованного чтения и записи для более эффективного использования памяти.
 
-#### Security:
-The program performs file I/O operations based on user-provided input file paths. It's important to ensure that the program has appropriate permissions and that user input is properly validated to prevent potential security vulnerabilities such as file path injection.
+#### Security:(Безопасность:)
+The program performs file I/O operations based on user-provided input file paths. It's important to ensure that the program has appropriate permissions and that user input is properly validated to prevent potential security vulnerabilities such as file path injection.<br>Программа выполняет операции ввода-вывода с файлами на основе предоставленных пользователем путей к файлам. Важно убедиться, что у программы есть соответствующие разрешения и что пользовательский ввод правильно валидируется, чтобы предотвратить возможные уязвимости безопасности, такие как внедрение путей к файлам.
 
 ---
 
