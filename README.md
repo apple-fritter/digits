@@ -6,9 +6,9 @@ Digits ensures your data is ready for further analysis, machine learning tasks, 
 ## Included Code
 
 #### BASH Scripts
-[digits.sh](https://github.com/apple-fritter/digits/blob/main/digits.sh) is a bash script that takes a path to a plaintext file as an argument at execution time. It parses the input file and generates an output file that is sanitized of non-numeric or punctuational characters. Additionally, it collapses repeated punctuational characters to only one instance instead of two or more.
+[digits.sh](https://github.com/apple-fritter/digits/blob/main/scripts/digits.sh) is a bash script that takes a path to a plaintext file as an argument at execution time. It parses the input file and generates an output file that is sanitized of non-numeric or punctuational characters. Additionally, it collapses repeated punctuational characters to only one instance instead of two or more.
 
-In addition to the main script, a supplementary script, [digitalpha.sh](https://github.com/apple-fritter/digits/blob/main/digitalpha.sh), is also provided, offering the same functionality with an extended capability. It allows alphanumeric and punctuational characters to pass through the sanitization process. This versatile script complements the main script, providing flexibility for data cleaning and preprocessing tasks where alphanumeric information is essential.
+In addition to the main script, a supplementary script, [digitalpha.sh](https://github.com/apple-fritter/digits/blob/main/scripts/digitalpha.sh), is also provided, offering the same functionality with an extended capability. It allows alphanumeric and punctuational characters to pass through the sanitization process. This versatile script complements the main script, providing flexibility for data cleaning and preprocessing tasks where alphanumeric information is essential.
 
 ---
 
@@ -85,7 +85,7 @@ Digits can be useful in various scenarios, including:
 
 ## Flowchart
 
-### [digits.sh](https://github.com/apple-fritter/digits/blob/main/digits.sh)
+### [digits.sh](https://github.com/apple-fritter/digits/blob/main/scripts/digits.sh)
 ```
 ┌─ Start Program
 │
@@ -114,7 +114,7 @@ Digits can be useful in various scenarios, including:
 └─ End Program
 ```
 
-### [digitalpha.sh](https://github.com/apple-fritter/digits/blob/main/digitalpha.sh)
+### [digitalpha.sh](https://github.com/apple-fritter/digits/blob/main/scripts/digitalpha.sh)
 ```
 ┌─ Start Program
 │
